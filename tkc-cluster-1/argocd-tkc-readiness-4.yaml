@@ -15,7 +15,7 @@ spec:
         command: ["sh", "-c"]
         args:
         - >
-          until curl -sfk https://${CLUSTER_IP}:6443;
+          until curl -sfk ${CLUSTER_IP}:6443;
           do echo 'Waiting for Kubernetes API...'; sleep 5;
           done;
           echo 'Kubernetes API is up and running!';
