@@ -1,6 +1,7 @@
 This should contain all the files for managing TKC clusters and their corresponding apps in the respective vSphere Namespace
 A common ArgoCD folder for the ArgoCD instance in this namespace
 
+```bash
 
 .
 ├── README.md
@@ -29,4 +30,4 @@ A common ArgoCD folder for the ArgoCD instance in this namespace
 │           └── app2
 │               ├── deployment.yaml
 │               └── service.yaml
-
+```
