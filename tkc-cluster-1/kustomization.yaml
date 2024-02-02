@@ -13,9 +13,3 @@ images:
 - name: whoami6443/argocd-hook
   newName: registry.guzware.net/whoami/argocd-hook
 
-data:
-  resource.customizations: |
-    cluster.x-k8s.io/Cluster:
-      ignoreDifferences: |
-        jsonPointers:
-        - /spec/variables
