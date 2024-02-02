@@ -5,7 +5,6 @@ resources:
 - antrea-config-1.yaml
 - tkgs-cluster-class-noaz-2.yaml
 - argocd-tkc-1-base-app-env-3.yaml
-- argocd-tkc-readiness-4.yaml
 - argocd-tkc-1-base-app-cm-5.yaml
 
 namespace: ns-1
