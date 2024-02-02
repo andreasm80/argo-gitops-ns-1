@@ -3,6 +3,8 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   name: tkc-cluster-1
+  annotations:
+    argocd.argoproj.io/sync-wave: "-8"
   namespace: ns-1
 spec:
   clusterNetwork:
