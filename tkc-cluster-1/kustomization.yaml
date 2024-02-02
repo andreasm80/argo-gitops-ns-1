@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- antrea-config.yaml
+- argocd-tkc-1-cm.yaml
+- argocd-job.yaml
+- argo-tkc-readiness.yaml
+- tkgs-cluster-class-noaz.yaml
+
+namespace: ns-1
+
+images:
+- name: whoami6443/argocd-hook
+  newName: registry.guzware.net/whoami/argocd-hook

@@ -1,0 +1,42 @@
+apiVersion: cni.tanzu.vmware.com/v1alpha1
+kind: AntreaConfig
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  name: tkc-cluster-1-antrea-package
+  namespace: ns-1
+spec:
+  antrea:
+    config:
+      antreaProxy:
+        proxyLoadBalancerIPs: true
+      defaultMTU: ""
+      disableTXChecksumOffload: false
+      disableUdpTunnelOffload: false
+      dnsServerOverride: ""
+      enableBridgingMode: false
+      enableUsageReporting: false
+      featureGates:
+        AntreaIPAM: false
+        AntreaPolicy: true
+        AntreaProxy: true
+        AntreaTraceflow: true
+        Egress: true
+        EndpointSlice: true
+        FlowExporter: true
+        Multicast: false
+        Multicluster: false
+        NetworkPolicyStats: true
+        NodePortLocal: true
+        SecondaryNetwork: false
+        ServiceExternalIP: false
+        TopologyAwareHints: false
+        TrafficControl: false
+      flowExporter:
+        activeFlowTimeout: 60s
+        collectorAddress: flow-aggregator/flow-aggregator:4739:tls
+      noSNAT: false
+      tlsCipherSuites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384
+      trafficEncapMode: encap
+      tunnelCsum: false
+      tunnelPort: 0

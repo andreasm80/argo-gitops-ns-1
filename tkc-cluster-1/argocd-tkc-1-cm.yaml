@@ -1,0 +1,27 @@
+# These are all the ArgoCD applocations that need to be executed on the workload cluster. Add/modify as needed. Change the name of the CM as needed
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: argocd-tkc-1-base-configmap
+    app.kubernetes.io/part-of: argocd
+  name: argocd-tkc-1-base-configmap
+data:
+  argocd-tkc-addons.template.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: tkc-addons-${CLUSTER_NAME}-gatekeeper
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/andreasm80/argocd-gitops-tanzu.git'
+        path: tkc-cluster-1/applications/gatekeeper-tkc-1
+        targetRevision: HEAD       
+      destination:
+        server: ${CLUSTER_IP}
+      syncPolicy:
+        automated:
+          prune: true
+    ---
+    # add more apps as needed

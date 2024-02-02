@@ -1,6 +1,9 @@
 This should contain all the files for managing TKC clusters and their corresponding apps in the respective vSphere Namespace
 A common ArgoCD folder for the ArgoCD instance in this namespace
 
+In my environment ArgoCD is deployed as vSphere pods in a specific vSphere pods. See here: https://github.com/papivot/argocd-gitops-tanzu  With ArgoCD the intentions are deploying and managing TKC clusters in this namespace and also the corresponding applications that should run on the respectivce TKC clusters.
+So for this to work there will be two places the yamls needs to be applied: In the namespace ArgoCD itself is running (eg. confimaps related to ArgoCD) then in-cluster apply for the apps/services etc that I will deploy inside the tkc cluster. 
+
 ```bash
 
 .
