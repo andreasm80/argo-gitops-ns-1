@@ -4,7 +4,7 @@ kind: Cluster
 metadata:
   name: tkc-cluster-1
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "-1"
   namespace: ns-1
 spec:
   clusterNetwork:

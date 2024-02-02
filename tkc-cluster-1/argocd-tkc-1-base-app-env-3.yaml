@@ -3,11 +3,11 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: app-tkc-base-creation
+  name: argocd-tkc-1-base-app-env
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   template:
     spec:
@@ -26,7 +26,7 @@ spec:
       volumes:
       - name: configmap-volume
         configMap:
-          name: argocd-tkc-1-base-configmap
+          name: argocd-tkc-1-base-app-configmap
       restartPolicy: Never
       serviceAccountName: argocd-argocd-application-controller
      # serviceAccountName: argocd-hook
