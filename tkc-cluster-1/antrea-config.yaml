@@ -2,7 +2,7 @@ apiVersion: cni.tanzu.vmware.com/v1alpha1
 kind: AntreaConfig
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-10"
+    argocd.argoproj.io/sync-wave: "1"
   name: tkc-cluster-1-antrea-package
   namespace: ns-1
 spec:

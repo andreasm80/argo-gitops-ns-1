@@ -5,6 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync # This annotation makes it a PreSync hook
     argocd.argoproj.io/hook-delete-policy: HookSucceeded # This tells ArgoCD to delete the hook on success
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   template:
     spec:
