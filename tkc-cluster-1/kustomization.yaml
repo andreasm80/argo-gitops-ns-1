@@ -3,9 +3,9 @@ kind: Kustomization
 
 resources:
 - antrea-config.yaml
-- argocd-tkc-1-cm.yaml
+- argocd-tkc-1-base-cm.yaml
 - argocd-job.yaml
-- argo-tkc-readiness.yaml
+- argocd-tkc-readiness.yaml
 - tkgs-cluster-class-noaz.yaml
 
 namespace: ns-1

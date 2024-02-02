@@ -15,7 +15,7 @@ data:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/andreasm80/argocd-gitops-tanzu.git'
+        repoURL: 'https://github.com/andreasm80/argo-gitops-ns-1.git'
         path: tkc-cluster-1/applications/gatekeeper-tkc-1
         targetRevision: HEAD       
       destination:

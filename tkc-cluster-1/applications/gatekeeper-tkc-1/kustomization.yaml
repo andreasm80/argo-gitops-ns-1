@@ -7,4 +7,4 @@ resources:
 
 images:
 - name: openpolicyagent/gatekeeper
-  newName: harbor.navneet.pro/proxy-cache/openpolicyagent/gatekeeper
+  newName: registry.guzware.net/gatekeeper/gatekeeper
