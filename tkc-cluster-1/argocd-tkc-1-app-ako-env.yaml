@@ -1,0 +1,33 @@
+# Modify the TKC_NAME value as per the requirements
+# Modify the configmap-volume configMap name to the appropriate value
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: argocd-tkc-1-ako-app-env
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  template:
+    spec:
+      containers:
+      - name: argocd-tkc-post
+        image: registry.guzware.net/whoami/argocd-hook:0.1.3
+        command: 
+          - "/script.sh"
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: TKC_NAME
+          value: "tkc-cluster-1"
+        volumeMounts:
+        - name: configmap-volume
+          mountPath: /template
+      volumes:
+      - name: configmap-volume
+        configMap:
+          name: argocd-tkc-1-ako-app-configmap
+      restartPolicy: Never
+      serviceAccountName: argocd-argocd-application-controller
+     # serviceAccountName: argocd-hook
+  backoffLimit: 2

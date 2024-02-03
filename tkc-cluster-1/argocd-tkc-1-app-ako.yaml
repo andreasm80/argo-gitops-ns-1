@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "4"
   labels:
-    app.kubernetes.io/name: argocd-tkc-1-base-app-configmap
+    app.kubernetes.io/name: argocd-tkc-1-ako-app-configmap
     app.kubernetes.io/part-of: argocd
   name: argocd-tkc-1-ako-app-configmap
 data:
