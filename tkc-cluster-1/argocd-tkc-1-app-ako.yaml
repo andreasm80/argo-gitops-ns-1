@@ -179,4 +179,20 @@ data:
         syncOptions:
           - CreateNamespace=true
     ---
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: tkc-addons-${CLUSTER_NAME}-ako-post-config
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/andreasm80/argo-gitops-ns-1.git'
+        path: applications/foundational/ako
+        targetRevision: HEAD
+      destination:
+        server: ${CLUSTER_IP}
+      syncPolicy:
+        automated:
+          prune: true
+    ---
     # add more apps as needed
