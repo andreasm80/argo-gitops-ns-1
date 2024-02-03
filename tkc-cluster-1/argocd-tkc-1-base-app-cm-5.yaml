@@ -63,8 +63,6 @@ data:
         automated:
           prune: true
           allowEmpty: true
-        syncOptions:
-          - CreateNamespace=true
     ---
     apiVersion: argoproj.io/v1alpha1
     kind: Application
@@ -189,8 +187,6 @@ data:
         automated:
           prune: true
           allowEmpty: true
-        syncOptions:
-          - CreateNamespace=true
     ---
     apiVersion: argoproj.io/v1alpha1
     kind: Application
