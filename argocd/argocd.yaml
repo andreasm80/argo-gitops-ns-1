@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1beta1
+kind: ArgoCD
+metadata:
+  name: argocd
+  namespace: ns-1
+  labels:
+    env: ns-1
+spec:
+  nodePlacement:
+    nodeSelector:
+      kubernetes.io/os: CRX
+  server:
+    host: argocd
+    service:
+      type: LoadBalancer
