@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
+  annotations:
+    pv.kubernetes.io/provisioned-by: cluster.local/nfs-subdir-external-provisioner
+  name: pvc-95c59675-7085-45cb-8a84-0364e7a7fe70
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: tanzu-pv-claim
+    namespace: avi-system
+  nfs:
+    path: /mnt/Pool1/Kubernetes/tanzu/nfs-storage-tanzu-pv-claim-pvc-95c59675-7085-45cb-8a84-0364e7a7fe70
+    server: 172.18.3.23
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tanzu-pv-claim
+  namespace: avi-system
+spec:
+  storageClassName: nfs-client
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
