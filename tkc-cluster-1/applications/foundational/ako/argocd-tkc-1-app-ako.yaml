@@ -187,7 +187,7 @@ data:
       project: default
       source:
         repoURL: 'https://github.com/andreasm80/argocd-gitops-tanzu.git'
-        path: applications/foundational/ako
+        path: tkc-cluster-1/applications/foundational/ako
         targetRevision: HEAD
       destination:
         server: ${CLUSTER_IP}
