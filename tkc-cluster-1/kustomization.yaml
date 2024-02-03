@@ -6,9 +6,9 @@ resources:
 - tkgs-cluster-class-noaz-2.yaml
 - argocd-tkc-1-base-app-env-3.yaml
 - argocd-tkc-1-base-app-cm-5.yaml
-- tkc-cluster-1/applications/foundational/repos/argocd-ako-repo.yaml
-- tkc-cluster-1/applications/foundational/repos/argocd-nfs-repo.yaml
-- tkc-cluster-1/applications/foundational/ako
+- applications/foundational/repos/argocd-ako-repo.yaml
+- applications/foundational/repos/argocd-nfs-repo.yaml
+- applications/foundational/ako
   
 namespace: ns-1
 
