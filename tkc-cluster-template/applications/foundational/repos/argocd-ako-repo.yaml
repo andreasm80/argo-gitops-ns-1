@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: avi-ako-helm-repo
+  namespace: ns-1
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: ako-oci-repo
+  url: projects.registry.vmware.com/ako/helm-charts
+  enableOCI: "true"
+  type: helm
+#  username: "<my-oci-repo-username>"
+#  password: "<my-oci-repo-pat>"
+#  ForceHttpBasicAuth: "true"
