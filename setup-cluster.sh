@@ -38,7 +38,9 @@ read cloud_name
 echo "What is the controller IP/DNS?"
 read controller_host
 
-
+# Define original and new paths for the applications/gatekeeper-tkc-1 folder within the newly created cluster directory
+original_gatekeeper_path="./${cluster_name}/applications/gatekeeper-tkc-1"
+new_gatekeeper_path="./${cluster_name}/applications/gatekeeper-${cluster_name}"
 
 
 # Define the source and destination directories
@@ -123,4 +125,12 @@ if [ -f "$original_argocd_tkc_deploy_path" ]; then
     echo "Created and updated ${new_argocd_tkc_deploy_file} based on cluster name and namespace inputs in the 'argocd' folder."
 else
     echo "Error: The original argocd-tkc-deploy.yaml file does not exist in the 'argocd' directory."
+fi
+
+# Rename the applications/gatekeeper-tkc-1 folder within the new cluster directory
+if [ -d "$original_gatekeeper_path" ]; then
+    mv "$original_gatekeeper_path" "$new_gatekeeper_path"
+    echo "Renamed gatekeeper folder to gatekeeper-${cluster_name} within the '${cluster_name}/applications' directory."
+else
+    echo "Error: The original gatekeeper folder does not exist in the '${cluster_name}/applications' directory."
 fi
