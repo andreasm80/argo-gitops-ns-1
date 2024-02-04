@@ -195,6 +195,7 @@ data:
         jsonPointers:
         - /data/password
         - /data/username
+        - /metadata/labels
     ---
     apiVersion: argoproj.io/v1alpha1
     kind: Application
