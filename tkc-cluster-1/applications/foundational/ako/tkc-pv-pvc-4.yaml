@@ -3,7 +3,6 @@ kind: PersistentVolume
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "6"
-  annotations:
     pv.kubernetes.io/provisioned-by: cluster.local/nfs-subdir-external-provisioner
   name: pvc-95c59675-7085-45cb-8a84-0364e7a7fe70
 spec:
@@ -26,6 +25,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
   name: tanzu-pv-claim
   namespace: avi-system
 spec:
