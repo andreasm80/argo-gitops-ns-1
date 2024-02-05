@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "2"
   labels:
     app.kubernetes.io/name: argocd-tkc-1-base-app-configmap
     app.kubernetes.io/part-of: argocd
