@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tkc-cluster-2-deploy
+  name: tkc-cluster-4-deploy
   namespace: ns-1
 spec:
   project: default
   source:
     repoURL: 'https://github.com/andreasm80/argo-gitops-ns-1.git'
-    path: tkc-cluster-2
+    path: tkc-cluster-4
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
