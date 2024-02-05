@@ -38,6 +38,12 @@ read cloud_name
 echo "What is the controller IP/DNS?"
 read controller_host
 
+# Define the path for the argocd-nfs-repo.yaml file in the applications/foundational/repos directory
+argocd_nfs_repo_path="./${cluster_name}/applications/foundational/repos/argocd-nfs-repo.yaml"
+
+# Define the path for the argocd-ako-repo.yaml file in the applications/foundational/repos directory
+argocd_ako_repo_path="./${cluster_name}/applications/foundational/repos/argocd-ako-repo.yaml"
+
 # Define original and new paths for the applications/gatekeeper-tkc-1 folder within the newly created cluster directory
 original_gatekeeper_path="./${cluster_name}/applications/gatekeeper-tkc-1"
 new_gatekeeper_path="./${cluster_name}/applications/gatekeeper-${cluster_name}"
@@ -134,4 +140,22 @@ if [ -d "$original_gatekeeper_path" ]; then
     echo "Renamed gatekeeper folder to gatekeeper-${cluster_name} within the '${cluster_name}/applications' directory."
 else
     echo "Error: The original gatekeeper folder does not exist in the '${cluster_name}/applications' directory."
+fi
+
+# Update argocd-ako-repo.yaml file with the new name
+if [ -f "$argocd_ako_repo_path" ]; then
+    perform_sed "s/name: avi-ako-helm-repo/name: avi-ako-helm-repo-${cluster_name}/" "$argocd_ako_repo_path"
+    perform_sed "s/namespace: ns-1/namespace: ${vsphere_namespace}/" "$argocd_ako_repo_path"
+    echo "Updated the name field in argocd-ako-repo.yaml to avi-ako-helm-repo-${cluster_name}."
+else
+    echo "Error: The argocd-ako-repo.yaml file does not exist in the '/applications/foundational/repos' directory."
+fi
+
+# Update argocd-nfs-repo.yaml file with the new name
+if [ -f "$argocd_nfs_repo_path" ]; then
+    perform_sed "s/name: nfs-helm-repo/name: nfs-helm-repo-${cluster_name}/" "$argocd_nfs_repo_path"
+    perform_sed "s/namespace: ns-1/namespace: ${vsphere_namespace}/" "$argocd_nfs_repo_path"
+    echo "Updated the name field in argocd-nfs-repo.yaml to nfs-helm-repo-${cluster_name}."
+else
+    echo "Error: The argocd-nfs-repo.yaml file does not exist in the '/applications/foundational/repos' directory."
 fi
