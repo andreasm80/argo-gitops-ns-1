@@ -86,6 +86,7 @@ fi
 if [ -f "$argocd_tkc_base_app_env_path" ]; then
     perform_sed "s/name: argocd-tkc-1-base-app-env/name: argocd-${cluster_name}-base-app-env/" "$argocd_tkc_base_app_env_path"
     perform_sed "s/value: \"tkc-cluster-1\"/value: \"${cluster_name}\"/" "$argocd_tkc_base_app_env_path"
+    perform_sed "s/name: argocd-tkc-post/name: argocd-${cluster_name}-post/" "$argocd_tkc_base_app_env_path"
     perform_sed "s/name: argocd-tkc-1-base-app-configmap/name: argocd-${cluster_name}-base-app-configmap/" "$argocd_tkc_base_app_env_path"
     echo "Updated argocd-tkc-base-app-env-3.yaml"
 fi
