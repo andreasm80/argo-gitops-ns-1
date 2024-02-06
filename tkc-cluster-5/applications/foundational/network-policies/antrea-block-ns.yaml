@@ -1,0 +1,31 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: ClusterNetworkPolicy
+metadata:
+  name: strict-ns-isolation-except-system-ns
+spec:
+  priority: 9
+  tier: securityops
+  appliedTo:
+    - namespaceSelector:          # Selects all non-system Namespaces in the cluster
+        matchExpressions:
+          - {key:  kubernetes.io/metadata.name, operator: NotIn, values: [nfs-storage,gatekeeper-system,avi-system,default,kube-node-lease,kube-public,kube-system,secretgen-controller,tanzu-continuousdelivery-resources,tanzu-fluxcd-packageinstalls,tanzu-kustomize-controller,tanzu-source-controller,tkg-system,vmware-system-antrea,vmware-system-auth,vmware-system-cloud-provider,vmware-system-csi,vmware-system-tkg,vmware-system-tmc]}
+  ingress:
+    - action: Pass
+      from:
+        - namespaces:
+            match: Self           # Skip ACNP evaluation for traffic from Pods in the same Namespace
+      name: PassFromSameNS
+    - action: Drop
+      from:
+        - namespaceSelector: {}   # Drop from Pods from all other Namespaces
+      name: DropFromAllOtherNS
+  egress:
+    - action: Pass
+      to:
+        - namespaces:
+            match: Self           # Skip ACNP evaluation for traffic to Pods in the same Namespace
+      name: PassToSameNS
+    - action: Drop
+      to:
+        - namespaceSelector: {}   # Drop to Pods from all other Namespaces
+      name: DropToAllOtherNS
