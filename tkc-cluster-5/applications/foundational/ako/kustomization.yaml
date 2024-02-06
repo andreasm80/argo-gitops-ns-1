@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ako-inject-secret-5.yaml
+- ako-secret-role-2.yaml
+- ako-secret-rolebinding-3.yaml
+- ako-secret-sa-1.yaml
+- tkc-pv-pvc-4.yaml

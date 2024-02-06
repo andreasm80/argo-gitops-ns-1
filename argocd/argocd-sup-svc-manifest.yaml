@@ -1,0 +1,47 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: PackageMetadata
+metadata:
+  creationTimestamp: null
+  name: argocd-operator.fling.vsphere.vmware.com
+spec:
+  categories:
+  - CI/CD
+  - GitOps
+  displayName: argocd-operator
+  iconSVGBase64: none
+  longDescription: argocd-operator is used to deploy instance of .....
+  maintainers:
+  - name: First
+  - name: Second
+  - name: Third
+  providerName: VMware
+  shortDescription: argocd-operator is used to deploy ....
+---
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: argocd-operator.fling.vsphere.vmware.com.0.8.0
+spec:
+  refName: argocd-operator.fling.vsphere.vmware.com
+  releasedAt: "2024-01-29T08:45:10Z"
+  template:
+    spec:
+      deploy:
+      - kapp: {}
+      fetch:
+      - imgpkgBundle:
+          image: registry.guzware.net/library/argocd-operator@sha256:e3b96b1549a71da572bc56bb6e9905c40c9d39a8b75353a2f0ea7851007ae73d
+      template:
+      - ytt:
+          paths:
+          - ./config
+      - kbld:
+          paths:
+          - '-'
+          - .imgpkg/images.yml
+  valuesSchema:
+    openAPIv3:
+      default: null
+      nullable: true
+  version: 0.8.0

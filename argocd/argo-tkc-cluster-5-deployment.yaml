@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tkc-cluster-5-deploy
+  namespace: ns-1
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/andreasm80/argo-gitops-ns-1.git'
+    path: tkc-cluster-5
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ns-1
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  ignoreDifferences:
+  - group: cluster.x-k8s.io
+    kind: Cluster
+    jsonPointers:
+    - /spec/topology/variables
+    - /spec/topology/version
