@@ -10,35 +10,35 @@ Below is the folder structure I am using. Each TKC cluster gets its own folder w
 
 .
 ├── README.md
+├── setup-cluster.sh
 ├── argocd
-│   ├── tkc-cluster-1.yaml
-│   ├── tkc-cluster-2.yaml
-│   ├── argocd-instance.ns-1.yaml
-│   ├── tkc-cluster-template
-│   │   ├── antrea-config-1.yaml
-│   │   ├── kustomization.yaml
-│   │   ├── tkgs-cluster-class-noaz-2.yaml
-│   │   ├── argocd-tkc-1-base-app-env-3.yaml
-│   │   ├── argocd-tkc-1-base-app-cm-5.yaml
-│   │   └── applications
-│   │       ├── gatekeeper-tkc-1
-│   │       │   ├── create-ns.yaml
-│   │       │   ├── gatekeeper.yaml
-│   │       │   ├── kustomization.ya
-│   │       │   └── mutation-psa-policy.yaml
-│   │       └── foundational
-│   │           ├── ako
-│   │           │   ├──ako-inject-secret-5.yaml
-│   │           │   ├── ako-secret-role-2.yaml
-│   │           │   ├── ako-secret-rolebinding-3.yaml
-│   │           │   ├── ako-secret-sa-1.yaml
-│   │           │   ├── kustomization.yaml
-│   │           │   └── tkc-pv-pvc-4.yaml
-│   │           └── repos
-│   │               ├── argocd-ako-repo.yaml
-│   │               └── argocd-nfs-repo.yaml
+│   ├── argo-tkc-cluster-1-deployment.yaml
+│   ├── argo-tkc-cluster-2-deployment.yaml
 │   └── projects
 │       └── myproject.yaml
+├── tkc-cluster-template
+│   ├── antrea-config-1.yaml
+│   ├── kustomization.yaml
+│   ├── tkgs-cluster-class-noaz-2.yaml
+│   ├── argocd-tkc-1-base-app-env-3.yaml
+│   ├── argocd-tkc-1-base-app-cm-5.yaml
+│   └── applications
+│       ├── gatekeeper-tkc-1
+│       │   ├── create-ns.yaml
+│       │   ├── gatekeeper.yaml
+│       │   ├── kustomization.ya
+│       │   └── mutation-psa-policy.yaml
+│       └── foundational
+│           ├── ako
+│           │   ├── ako-inject-secret-5.yaml
+│           │   ├── ako-secret-role-2.yaml
+│           │   ├── ako-secret-rolebinding-3.yaml
+│           │   ├── ako-secret-sa-1.yaml
+│           │   ├── kustomization.yaml
+│           │   └── tkc-pv-pvc-4.yaml
+│           └── repos
+│               ├── argocd-ako-repo.yaml
+│               └── argocd-nfs-repo.yaml
 ├── tkc-cluster-1
 │   ├── antrea-config-1.yaml
 │   ├── kustomization.yaml 
