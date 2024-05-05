@@ -17,7 +17,7 @@ spec:
     class: tanzukubernetescluster
     version: v1.26.5---vmware.2-fips.1-tkg.1
     controlPlane:
-      replicas: 1
+      replicas: 3
       metadata:
         annotations:
           run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
@@ -25,13 +25,13 @@ spec:
       machineDeployments:
         - class: node-pool
           name: node-pool-1
-          replicas: 1
+          replicas: 3
           metadata:
             annotations:
               run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
     variables:
       - name: vmClass
-        value: best-effort-small
+        value: best-effort-large
       - name: storageClass
         value: vsan-default-storage-policy
       - name: defaultStorageClass
